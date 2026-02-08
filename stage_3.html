@@ -43,24 +43,23 @@
   </div>
 
   <script>
-    // Check if stage 2 was completed
     const stage2Complete = localStorage.getItem("stage2Solved") === "true";
     const card = document.getElementById("mainCard");
 
     if(stage2Complete){
-      // Replace content with Stage 3 info
       card.innerHTML = `
         <h1>🎉 Stage 3: Special 🎉</h1>
-        <p>Congratulations! You solved Stage 2.</p>
-        <p>Stage 3 is extra special—because <strong>3 is your favorite number</strong> 😄</p>
+        <p>Yipee!! You solved Stage 2, good for you :3 </p>
+        <p>Stage 3 is extra special, because 3 is your favorite number 😍 </p>
         <p>But your next key isn’t online… you’ll need to find it in real life.</p>
-        <p class="muted">Look where things come in threes, or near something small and purple 🐦💜</p>
+        <p class="muted">Look where things come in twos in the classroom, or near something hidden beneath an large object you use every 5 days of the week 💜</p>
       `;
     } else {
-      // Deny access if stage 2 not solved
+      // Haha I anticipated your sneakiness >:3
       card.innerHTML = `
-        <h1>Access Denied 🚫</h1>
-        <p>You cannot access this stage yet. Make sure you complete Stage 2 first!</p>
+        <h1>Access Denied!!! 🚫</h1>
+        <p>You sneaky sneakling 😒... Trying to play smart by skipping stages? Nuh uh, not on my watch 😡</p>
+        <p> Go solve stage 2 first, I spent time on these puzzles 😋 Ok thx byeee </p>
       `;
     }
   </script>
