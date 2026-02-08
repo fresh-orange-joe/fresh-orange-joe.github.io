@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fluixon Cipher Riddle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #f6f2fb;
+      --card: #ffffff;
+      --text: #3d2f4f;
+      --muted: #7a6a8a;
+      --accent: #c7b3e5;
+      --accent-soft: #e7dcf6;
+      --hint: #a88ee5;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, var(--bg), var(--accent-soft));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+    }
+
+    .card {
+      background: var(--card);
+      padding: 2.5rem 2.5rem 2rem;
+      max-width: 600px;
+      width: 90%;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(61,47,79,0.1);
+      text-align: left;
+    }
+
+    h1 { font-size: 1.5rem; margin-bottom: 1rem; }
+    p { font-size: 1rem; line-height: 1.6; margin-bottom: 1rem; }
+    .muted { color: var(--muted); font-size: 0.9rem; }
+
+    input[type=text] {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      margin-top: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--muted);
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: var(--text);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    button:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(61,47,79,0.15); }
+
+    .hint {
+      margin-top: 1rem;
+      color: var(--hint);
+      font-style: italic;
+      display: none;
+    }
+
+    .key {
+      display: none;
+      margin-top: 2rem;
+      font-size: 2rem;
+      color: var(--accent);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 1s ease;
+      opacity: 0;
+    }
+
+    .key.show { display: block; opacity: 1; }
+    .key:hover { transform: scale(1.2); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Riddle</h1>
+    <p>
+      K uvqqf ugeqpf vq vjg vjtqpg,<br>
+      vjgp jkijgt vjcp mkpiu,<br>
+      vjgp nqygt vjcp fwuv.<br><br>
+
+      K ngctpgf vjcv dncog vtcxgnu hcuvgt<br>
+      yjgp kv’u rqkpvgf, pqv rtqxgp.<br><br>
+
+      Pcogu uvwem yjgtg K rtguugf vjgo,<br>
+      cpf jkuvqta hqnnqygf uwkv.<br><br>
+
+      Yjgp vjg rqygthwn xcpkujgf,<br>
+      K uvcagf wpvqwejgf<br>
+      cpf vqnf oaugnh vjcv ogcpv K ycu tkijv.<br><br>
+
+      Owej ncvgt,<br>
+      qpg qh vjqug pcogu hqwpf og.<br><br>
+
+      Yg ogv kp c tkpi<br>
+      yjgtg vtwvj kup’v pggfgf,<br>
+      qpna c etqyf<br>
+      yknnkpi vq dgnkgxg kv.
+    </p>
+
+    <p>Type your answer below (all lowercase, no spaces/punctuation):</p>
+    <input type="text" id="answerInput" placeholder="Your answer here">
+    <button id="submitBtn">Submit</button>
+
+    <p class="hint" id="hintText"></p>
+
+    <div class="key" id="keyHint" title="Next stage">🗝️</div>
+  </div>
+
+  <script>
+    const correctAnswer = "fluixon"; 
+    const hints = [
+      "Hint 1: Come on girl you know the answer...",
+      "Hint 2: Huge giveaway: EVIL BABY",
+      "Hint 3: Kiwi kiwi kiwi kiwi kiwi kiwi kiwi"
+    ];
+
+    let hintIndex = 0;
+    const answerInput = document.getElementById("answerInput");
+    const submitBtn = document.getElementById("submitBtn");
+    const hintText = document.getElementById("hintText");
+    const keyHint = document.getElementById("keyHint");
+
+    submitBtn.addEventListener("click", () => {
+      const userAnswer = answerInput.value.trim().toLowerCase();
+
+      if(userAnswer === correctAnswer){
+        // correct answer
+        hintText.style.display = "none";
+        keyHint.classList.add("show");
+      } else {
+        // wrong answer → show next hint
+        hintText.textContent = hints[hintIndex];
+        hintText.style.display = "block";
+        hintIndex = (hintIndex + 1) % hints.length; 
+      }
+    });
+
+    keyHint.addEventListener("click", () => {
+      window.location.href = "https://fresh-orange-joe.github.io/stage3"; // Update stage 3 later
+    });
+  </script>
+</body>
+</html>

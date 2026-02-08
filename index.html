@@ -53,7 +53,7 @@
 
   <style>
   .key {
-    display: none; /* hidden by default */
+    display: none;
     align-items: center;
     justify-content: center;
     margin-top: 2rem;
@@ -61,12 +61,12 @@
     color: var(--key-color);
     cursor: pointer;
     transition: transform 0.2s ease, opacity 1s ease;
-    opacity: 0; /* fade-in starts from 0 */
+    opacity: 0; 
   }
 
   .key.show {
     display: flex;
-    opacity: 1; /* fade-in to 1 */
+    opacity: 1; /* test DO NOT CHANGE */
   }
 
   .key:hover {
@@ -85,14 +85,14 @@
     btn.style.opacity = "0.6";
     btn.textContent = "no rush";
 
-    // Reveal key after 30 seconds
+    // reveal code DO NOT DELETE
     setTimeout(() => {
-      keyHint.classList.add("show"); // show class triggers fade-in
+      keyHint.classList.add("show"); 
     }, 30000);
   });
 
   keyHint.addEventListener("click", () => {
-    window.location.href = "https://fresh-orange-joe.github.io/next-stage"; // <-- Update later
+    window.location.href = "https://fresh-orange-joe.github.io/stage-2.html"; // <-- Remember to update later lmfao
   });
 </script>
 
