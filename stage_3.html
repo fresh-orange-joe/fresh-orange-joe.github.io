@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stage 3: Special</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #f6f2fb;
+      --card: #ffffff;
+      --text: #3d2f4f;
+      --muted: #7a6a8a;
+      --accent: #c7b3e5;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, var(--bg), var(--accent));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+    }
+    .card {
+      background: var(--card);
+      padding: 2.5rem 2.5rem 2rem;
+      max-width: 600px;
+      width: 90%;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(61,47,79,0.1);
+      text-align: center;
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 1rem; }
+    p { font-size: 1rem; line-height: 1.6; margin-bottom: 1rem; }
+    .muted { color: var(--muted); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="card" id="mainCard">
+    <h1>Stage 3</h1>
+    <p>Verifying access...</p>
+  </div>
+
+  <script>
+    // Check if stage 2 was completed
+    const stage2Complete = localStorage.getItem("stage2Solved") === "true";
+    const card = document.getElementById("mainCard");
+
+    if(stage2Complete){
+      // Replace content with Stage 3 info
+      card.innerHTML = `
+        <h1>🎉 Stage 3: Special 🎉</h1>
+        <p>Congratulations! You solved Stage 2.</p>
+        <p>Stage 3 is extra special—because <strong>3 is your favorite number</strong> 😄</p>
+        <p>But your next key isn’t online… you’ll need to find it in real life.</p>
+        <p class="muted">Look where things come in threes, or near something small and purple 🐦💜</p>
+      `;
+    } else {
+      // Deny access if stage 2 not solved
+      card.innerHTML = `
+        <h1>Access Denied 🚫</h1>
+        <p>You cannot access this stage yet. Make sure you complete Stage 2 first!</p>
+      `;
+    }
+  </script>
+</body>
+</html>
