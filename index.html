@@ -13,110 +13,64 @@
       --muted: #7a6a8a;
       --accent: #c7b3e5;
       --accent-soft: #e7dcf6;
+      --key-color: #bda0f7;
     }
 
-    * {
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(180deg, var(--bg), var(--accent-soft));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text);
-    }
-
-    .card {
-      background: var(--card);
-      padding: 2.5rem 2.5rem 2rem;
-      max-width: 420px;
-      width: 90%;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(61, 47, 79, 0.1);
-      text-align: left;
-    }
-
-    h1 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin: 0 0 1rem;
-    }
-
-    p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin: 0 0 1rem;
-      color: var(--text);
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    button {
-      margin-top: 1.5rem;
-      padding: 0.6rem 1.2rem;
-      border-radius: 999px;
-      border: none;
-      background: var(--accent);
-      color: var(--text);
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: transform 0.1s ease, box-shadow 0.1s ease;
-    }
-
-    button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(61, 47, 79, 0.15);
-    }
-
-    .hidden {
-      display: none;
-    }
+    * { box-sizing: border-box; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { margin: 0; min-height: 100vh; background: linear-gradient(180deg, var(--bg), var(--accent-soft)); display: flex; align-items: center; justify-content: center; color: var(--text); }
+    .card { background: var(--card); padding: 2.5rem 2.5rem 2rem; max-width: 420px; width: 90%; border-radius: 16px; box-shadow: 0 10px 30px rgba(61, 47, 79, 0.1); text-align: left; }
+    h1 { font-size: 1.4rem; font-weight: 600; margin: 0 0 1rem; }
+    p { font-size: 1rem; line-height: 1.6; margin: 0 0 1rem; color: var(--text); }
+    .muted { color: var(--muted); font-size: 0.9rem; }
+    button { margin-top: 1.5rem; padding: 0.6rem 1.2rem; border-radius: 999px; border: none; background: var(--accent); color: var(--text); font-size: 0.9rem; cursor: pointer; transition: transform 0.1s ease, box-shadow 0.1s ease; }
+    button:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(61, 47, 79, 0.15); }
+    .hidden { display: none; }
+    .key { display: flex; align-items: center; justify-content: center; margin-top: 2rem; font-size: 2rem; color: var(--key-color); cursor: pointer; transition: transform 0.2s ease; }
+    .key:hover { transform: scale(1.2); }
   </style>
 </head>
-
 <body>
   <div class="card">
     <h1>hi.</h1>
 
-    <p>
-      this isn’t anything urgent.
-    </p>
+    <p>this isn’t anything urgent.</p>
 
-    <p>
-      if you found your way here on a birthday,
-      that’s probably not a coincidence —
-      but it’s also not something you need to solve right now.
-    </p>
+    <p>if you found your way here on a birthday, that’s probably not a coincidence — but it’s also not something you need to solve right now.</p>
 
-    <p class="muted">
-      take your time. this page will stay.
-    </p>
+    <p class="muted">take your time. this page will stay.</p>
 
     <button id="continueBtn">i’m curious</button>
 
     <p id="afterClick" class="muted hidden">
-      okay.  
-      then you can keep going when you’re ready.
+      okay. <br> then you can keep going when you’re ready. <br>
+      <span>P.S. patience is key.</span>
     </p>
+
+    <div id="keyHint" class="key hidden" title="Next stage">
+      🗝️
+    </div>
   </div>
 
   <script>
     const btn = document.getElementById("continueBtn");
     const text = document.getElementById("afterClick");
+    const keyHint = document.getElementById("keyHint");
 
     btn.addEventListener("click", () => {
       text.classList.remove("hidden");
       btn.disabled = true;
       btn.style.opacity = "0.6";
       btn.textContent = "no rush";
+
+      // After 30 seconds, reveal the key
+      setTimeout(() => {
+        keyHint.classList.remove("hidden");
+      }, 30000); // 30,000 ms = 30 seconds
+    });
+
+    // Optional: key click leads to next stage (update URL later)
+    keyHint.addEventListener("click", () => {
+      window.location.href = "https://fresh-orange-joe.github.io/next-stage"; // <-- Change to your next page URL
     });
   </script>
 </body>
