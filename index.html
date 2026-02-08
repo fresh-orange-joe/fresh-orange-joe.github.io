@@ -51,27 +51,34 @@
     </div>
   </div>
 
-  <script>
-    const btn = document.getElementById("continueBtn");
-    const text = document.getElementById("afterClick");
-    const keyHint = document.getElementById("keyHint");
+<script>
+  const btn = document.getElementById("continueBtn");
+  const text = document.getElementById("afterClick");
+  const keyHint = document.getElementById("keyHint");
 
-    btn.addEventListener("click", () => {
-      text.classList.remove("hidden");
-      btn.disabled = true;
-      btn.style.opacity = "0.6";
-      btn.textContent = "no rush";
+  // Ensure key is hidden on every page load
+  keyHint.classList.add("hidden");
 
-      // After 30 seconds, reveal the key
-      setTimeout(() => {
-        keyHint.classList.remove("hidden");
-      }, 30000); // 30,000 ms = 30 seconds
-    });
+  btn.addEventListener("click", () => {
+    text.classList.remove("hidden");
+    btn.disabled = true;
+    btn.style.opacity = "0.6";
+    btn.textContent = "no rush";
 
-    // Optional: key click leads to next stage (update URL later)
-    keyHint.addEventListener("click", () => {
-      window.location.href = "https://fresh-orange-joe.github.io/next-stage"; // <-- Change to your next page URL
-    });
-  </script>
+    // Remove any previous timeout (optional, just in case)
+    if (window.keyTimeout) clearTimeout(window.keyTimeout);
+
+    // After 30 seconds, reveal the key
+    window.keyTimeout = setTimeout(() => {
+      keyHint.classList.remove("hidden");
+    }, 30000); // 30,000 ms = 30 seconds
+  });
+
+  // Optional: key click leads to next stage
+  keyHint.addEventListener("click", () => {
+    window.location.href = "https://fresh-orange-joe.github.io/next-stage"; // <-- Update URL
+  });
+</script>
+
 </body>
 </html>
