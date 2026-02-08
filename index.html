@@ -46,18 +46,38 @@
       <span>P.S. patience is key.</span>
     </p>
 
-    <div id="keyHint" class="key hidden" title="Next stage">
+    <div id="keyHint" class="key" title="Next stage">
       🗝️
     </div>
   </div>
+
+  <style>
+  .key {
+    display: none; /* hidden by default */
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    font-size: 2rem;
+    color: var(--key-color);
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 1s ease;
+    opacity: 0; /* fade-in starts from 0 */
+  }
+
+  .key.show {
+    display: flex;
+    opacity: 1; /* fade-in to 1 */
+  }
+
+  .key:hover {
+    transform: scale(1.2);
+  }
+</style>
 
 <script>
   const btn = document.getElementById("continueBtn");
   const text = document.getElementById("afterClick");
   const keyHint = document.getElementById("keyHint");
-
-  // Ensure key is hidden on every page load
-  keyHint.classList.add("hidden");
 
   btn.addEventListener("click", () => {
     text.classList.remove("hidden");
@@ -65,18 +85,14 @@
     btn.style.opacity = "0.6";
     btn.textContent = "no rush";
 
-    // Remove any previous timeout (optional, just in case)
-    if (window.keyTimeout) clearTimeout(window.keyTimeout);
-
-    // After 30 seconds, reveal the key
-    window.keyTimeout = setTimeout(() => {
-      keyHint.classList.remove("hidden");
-    }, 30000); // 30,000 ms = 30 seconds
+    // Reveal key after 30 seconds
+    setTimeout(() => {
+      keyHint.classList.add("show"); // show class triggers fade-in
+    }, 30000);
   });
 
-  // Optional: key click leads to next stage
   keyHint.addEventListener("click", () => {
-    window.location.href = "https://fresh-orange-joe.github.io/next-stage"; // <-- Update URL
+    window.location.href = "https://fresh-orange-joe.github.io/next-stage"; // <-- Update later
   });
 </script>
 
